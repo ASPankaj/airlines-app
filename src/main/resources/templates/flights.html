@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link href="/webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet" />
+	<script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<meta charset="ISO-8859-1">
+	<title>flight list</title>
+	</head>
+	<body>
+		<h2>List of flights</h2>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" data-whatever="@mdo">Add Modal</button>
+		
+		<table class="table table-stripped">
+			<thead>
+			<tr>
+				<td>Flight Id</td>
+				<td>Flight Name</td>
+				<td>Source</td>
+				<td>Destination</td>
+				<td>No Of Seats</td>
+				<td>Arrived On</td>
+				<td>Departure By</td>
+				<td>Edit</td>
+			</tr>
+			</thead>
+				<tr th:each="flight:${flights}">
+				<td th:text="${flight.flightId}">Flight Id</td>
+				<td th:text="${flight.flightName}">Flight Name</td>
+				<td th:text="${flight.source}">Source</td>
+				<td th:text="${flight.destination}">Destination</td>
+				<td th:text="${flight.noOfSeats}">No Of Seats</td>
+				<td th:text="${flight.ArrivedOn}">Arrived On</td>
+				<td th:text="${flight.departureBy}">Departure By</td>
+				<td><a class="btn btn-warning">Edit</a></td>
+			</tr>
+		</table>
+			
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form th:action="@{/flights/addNew}" method="post">
+   <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Flight</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Flight Id</label>
+            <input type="text" class="form-control" id="recipient-name" name="flightId">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Flight Name</label>
+            <input type="text" class="form-control" id="recipient-name" name="flightName">
+          </div>
+           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Source</label>
+            <input type="text" class="form-control" id="recipient-name" name="source">
+          </div>
+           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Destination</label>
+            <input type="text" class="form-control" id="recipient-name" name="destination">
+          </div>
+           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">No Of Seats</label>
+            <input type="text" class="form-control" id="recipient-name" name="noOfSeats">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Arrived On</label>
+            <input type="text" class="form-control" id="recipient-name" name="arrivedOn">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Departure By</label>
+            <input type="text" class="form-control" id="recipient-name" name="departureBy">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div> 
+  </div>
+ </form>
+</div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form th:action="@{/flights/update}" method="put">
+   <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Flight</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Flight Id</label>
+            <input type="text" class="form-control" id="recipient-name" name="flightIdEdit">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Flight Name</label>
+            <input type="text" class="form-control" id="recipient-name" name="flightNameEdit">
+          </div>
+           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Source</label>
+            <input type="text" class="form-control" id="recipient-name" name="sourceEdit">
+          </div>
+           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Destination</label>
+            <input type="text" class="form-control" id="recipient-name" name="destinationEdit">
+          </div>
+           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">No Of Seats</label>
+            <input type="text" class="form-control" id="recipient-name" name="noOfSeatsEdit">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Arrived On</label>
+            <input type="text" class="form-control" id="recipient-name" name="arrivedOnEdit">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Departure By</label>
+            <input type="text" class="form-control" id="recipient-name" name="departureByEdit">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div> 
+  </div>
+ </form>
+</div>
+	</body>
+</html>
+
+
+<!-- 8747929071
+
+1 lavanya
+2 home
+3 kansu
+4 cocnut tree
+-->
+
+
+
+
