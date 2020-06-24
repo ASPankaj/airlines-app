@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,18 +21,17 @@ public class FlightController {
 	@Autowired
 	private FlightService flightService;
 		
-	@GetMapping("/getAll")
+	@RequestMapping("/getAll")
 	public String getAll(Model model) {
 		List<Flight> flights = flightService.getAll();
 		model.addAttribute("flights",flights);
 		return "flights";	
 	}
 	
-	@GetMapping("/getOne") 
+	@RequestMapping("/getOne") 
 	@ResponseBody
-	public Optional<Flight> getOne(Integer Id)
-	{
-		return flightService.getOne(Id);
+	public Optional<Flight> getOne(Integer flightId){
+		return flightService.getOne(flightId);
 	}
 	
 	@PostMapping(value="/addNew")
@@ -47,4 +45,5 @@ public class FlightController {
 		flightService.update(flight);
 		return "redirect:/flights/getAll";
 	}
+	
 }

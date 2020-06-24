@@ -108,8 +108,12 @@ public class Flight {
 		this.arrivedOn = arrivedOn;
 		this.departureBy = departureBy;
 	}
-	
-	
-	
-	
+
+
+	@Override
+	public String toString() {
+		return "Flight [flightId=" + flightId + ", flightName=" + flightName + ", source=" + source + ", destination="
+				+ destination + ", noOfSeats=" + noOfSeats + ", arrivedOn=" + arrivedOn + ", departureBy=" + departureBy
+				+ "]";
+	}
 }

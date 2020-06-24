@@ -4,12 +4,13 @@
 	<link href="/webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet" />
 	<script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<meta charset="ISO-8859-1">
+	<script type="text/javascript" src="../static/js/main.js" th:src="@{/js/main.js}"></script> 
+	<meta charset="ISO-8859-1"> 
 	<title>flight list</title>
 	</head>
 	<body>
 		<h2>List of flights</h2>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" data-whatever="@mdo">Add Modal</button>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add Modal</button>
 		
 		<table class="table table-stripped">
 			<thead>
@@ -29,12 +30,12 @@
 				<td th:text="${flight.flightName}">Flight Name</td>
 				<td th:text="${flight.source}">Source</td>
 				<td th:text="${flight.destination}">Destination</td>
-				<td th:text="${flight.noOfSeats}">No Of Seats</td>
+				<td th:text="${flight.noOfSeats}">No Of Seats</td>		
 				<td th:text="${flight.ArrivedOn}">Arrived On</td>
 				<td th:text="${flight.departureBy}">Departure By</td>
-				<td><a class="btn btn-warning">Edit</a></td>
+				<td><a th:href="@{/flights/getOne/(flightId=${flight.flightId})} " class="btn btn-warning" >Edit</a></td>
 			</tr>
-		</table>
+		</table> 
 			
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <form th:action="@{/flights/addNew}" method="post">
@@ -85,7 +86,7 @@
  </form>
 </div>
 
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <form th:action="@{/flights/update}" method="put">
    <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -98,31 +99,31 @@
       <div class="modal-body">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Flight Id</label>
-            <input type="text" class="form-control" id="recipient-name" name="flightIdEdit">
+            <input type="text" class="form-control" id="flightIdEdit" name="flightId">
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Flight Name</label>
-            <input type="text" class="form-control" id="recipient-name" name="flightNameEdit">
+            <input type="text" class="form-control" id="flightNameEdit" name="flightName">
           </div>
            <div class="form-group">
             <label for="recipient-name" class="col-form-label">Source</label>
-            <input type="text" class="form-control" id="recipient-name" name="sourceEdit">
+            <input type="text" class="form-control" id="sourceEdit" name="source">
           </div>
            <div class="form-group">
             <label for="recipient-name" class="col-form-label">Destination</label>
-            <input type="text" class="form-control" id="recipient-name" name="destinationEdit">
+            <input type="text" class="form-control" id="destinationEdit" name="destination">
           </div>
            <div class="form-group">
             <label for="recipient-name" class="col-form-label">No Of Seats</label>
-            <input type="text" class="form-control" id="recipient-name" name="noOfSeatsEdit">
+            <input type="text" class="form-control" id="noOfSeatsEdit" name="noOfSeats">
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Arrived On</label>
-            <input type="text" class="form-control" id="recipient-name" name="arrivedOnEdit">
+            <input type="text" class="form-control" id="arrivedOnEdit" name="arrivedOn">
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Departure By</label>
-            <input type="text" class="form-control" id="recipient-name" name="departureByEdit">
+            <input type="text" class="form-control" id="departureByEdit" name="departureBy">
           </div>
       </div>
       <div class="modal-footer">
@@ -135,16 +136,3 @@
 </div>
 	</body>
 </html>
-
-
-<!-- 8747929071
-
-1 lavanya
-2 home
-3 kansu
-4 cocnut tree
--->
-
-
-
-
