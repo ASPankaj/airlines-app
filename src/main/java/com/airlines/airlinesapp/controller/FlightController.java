@@ -46,4 +46,9 @@ public class FlightController {
 		return "redirect:/flights/getAll";
 	}
 	
+	@RequestMapping(value="/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
+	public String delete(Integer flightId) { 
+		flightService.delete(flightId);
+		return "redirect:/flights/getAll";
+	}
 }

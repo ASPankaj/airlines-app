@@ -29,4 +29,8 @@ public class FlightService {
 		System.out.println(flight);
 	 	 flightRepository.save(flight);
 	}
+	
+	public void delete(Integer flightId) {
+		flightRepository.deleteById(flightId);
+	}
 }

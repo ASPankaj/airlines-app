@@ -3,7 +3,7 @@
  */
 
 $('document').ready(function(){	
-	$('.table .btn').on('click',function(event){	
+	$('.table .btn-warning').on('click',function(event){	
 		
 		event.preventDefault();
 		
@@ -20,5 +20,12 @@ $('document').ready(function(){
 		});
 		
 		$('#editModal').modal();				
-	});		
+	});	
+	
+	$('.table #deleteButton').on('click',function(event){
+		event.preventDefault();		
+		var href = $(this).attr('href');
+		$('#deleteModal #delRef').attr('href', href);		
+		$('#deleteModal').modal();
+	});   
 });
