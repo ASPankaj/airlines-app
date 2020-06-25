@@ -25,6 +25,8 @@ public class FlightController {
 	public String getAll(Model model) {
 		List<Flight> flights = flightService.getAll();
 		model.addAttribute("flights",flights);
+		String username = "Pankaj";
+		model.addAttribute("username", username);
 		return "flights";	
 	}
 	
